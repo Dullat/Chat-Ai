@@ -3,9 +3,19 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      sans: "poppins",
+      sans: "sans-serif",
     },
-    extend: {},
+    extend: {
+      animation: {
+        loading: "loading 2s ease-in-out infinite",
+      },
+      keyframes: {
+        loading: {
+          "0%, 100%": { backgroundPosition: "-800px 0px" },
+          "50%": { backgroundPosition: "0px 0px" },
+        },
+      },
+    },
   },
   plugins: [],
 };

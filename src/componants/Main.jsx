@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <div className="flex-grow bg-slate-white flex flex-col">
       <NavBar />
-      <div className="w-full max-w-[900px] flex-grow m-auto flex flex-col bg-red-50 overflow-y-scroll p-4">
+      <div className="w-full max-w-[900px] flex-grow m-auto flex flex-col overflow-y-scroll p-4">
         {!showResult ? (
           <div className="p-4 text-4xl font-semibold">
             <p className="bg-gradient-to-r from-violet-500 to-blue-500 bg-clip-text text-transparent w-fit">
@@ -20,9 +20,19 @@ const Main = () => {
           </div>
         ) : (
           <div className="">
-            <div>
-              <p>{recentPrompt}</p>
-              <p dangerouslySetInnerHTML={{ __html: result }}></p>
+            <div className="flex flex-col gap-6">
+              <p className="p-4 py-1 self-end text-end ml-auto bg-slate-200 rounded-full">
+                {recentPrompt}
+              </p>
+              {loading ? (
+                <div className="flex flex-col gap-4">
+                  <hr className="animate-loading h-[15px] bg-gradient-to-r from-blue-500 via-white to-blue-500 rounded-md" />
+                  <hr className="animate-loading h-[15px] bg-gradient-to-r from-blue-500 via-white to-blue-500 rounded-md" />
+                  <hr className="animate-loading h-[15px] bg-gradient-to-r from-blue-500 via-white to-blue-500 rounded-md" />
+                </div>
+              ) : (
+                <p dangerouslySetInnerHTML={{ __html: result }}></p>
+              )}
             </div>
           </div>
         )}
