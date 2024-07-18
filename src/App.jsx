@@ -3,7 +3,7 @@ import Main from "./componants/Main.jsx";
 function App() {
   return (
     <div className="flex h-dvh overflow-hidden">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <Main />
     </div>
   );

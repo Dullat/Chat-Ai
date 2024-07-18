@@ -15,24 +15,23 @@ export const ContextProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("");
 
-  const onSent = async (prompt) => {
+  const [currentChat, setCurrentChat] = useState([]);
+
+  const onSent = async () => {
     setResult("");
     setLoading(true);
     setShowResult(true);
     setRecentPrompt(input);
     const response = await runChat(input);
     let splited = response.split("```");
-    console.log(splited);
     let final = "";
     for (let i = 0; i < splited.length; i++) {
       if (i === 0 || i % 2 !== 1) {
         const normal = splited[i].split("**");
-        console.log(normal);
         let newNormal = "";
         for (let j = 0; j < normal.length; j++) {
           if (j === 0 || j % 2 !== 1) {
             newNormal += normal[j];
-            console.log(newNormal);
           } else newNormal += `<b>${normal[j]}</b>`;
         }
 
@@ -45,7 +44,6 @@ export const ContextProvider = (props) => {
             newNormal2 += `<code style="background: #d1d5db; padding: 4px; border-radius: 3px;">${newNormalSplited[k]}</code>`;
         }
 
-        console.log(newNormal);
         final += newNormal2;
       } else {
         final +=
@@ -58,7 +56,7 @@ export const ContextProvider = (props) => {
     console.log(final);
 
     let newResponse2 = `<pre style="white-space: pre-wrap; line-height: 1.5rem; width: 100%; font-family: sans-serif; letter-spacing: 1px ">${final}<pre>`;
-    setResult(newResponse2);
+    setCurrentChat([...currentChat, { prompt: input, chat: newResponse2 }]);
     setLoading(false);
     setInput("");
   };
@@ -77,6 +75,7 @@ export const ContextProvider = (props) => {
     result,
     setResult,
     onSent,
+    currentChat,
   };
 
   return (
