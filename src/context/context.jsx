@@ -36,8 +36,17 @@ export const ContextProvider = (props) => {
           } else newNormal += `<b>${normal[j]}</b>`;
         }
 
+        let newNormalSplited = newNormal.split("`");
+        let newNormal2 = "";
+        for (let k = 0; k < newNormalSplited.length; k++) {
+          if (k === 0 || k % 2 !== 1) {
+            newNormal2 += newNormalSplited[k];
+          } else
+            newNormal2 += `<code style="background: #d1d5db; padding: 4px; border-radius: 3px;">${newNormalSplited[k]}</code>`;
+        }
+
         console.log(newNormal);
-        final += newNormal;
+        final += newNormal2;
       } else {
         final +=
           "<pre style='background:gray; padding: .5rem; border-radius: .5rem; max-width: 100vw; overflow: scroll'>" +

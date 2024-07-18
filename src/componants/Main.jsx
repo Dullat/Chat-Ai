@@ -37,7 +37,7 @@ const Main = () => {
           </div>
         )}
       </div>
-      <div className="flex items-center gap-4 bg-slate-200 rounded-full px-4 py-2 m-4 mt-4">
+      <div className="flex items-center gap-4 bg-slate-200 rounded-full px-4 py-2 m-auto my-4 w-full max-w-[900px]">
         <input
           type="text"
           value={input}
