@@ -1,4 +1,4 @@
-// AIzaSyCtQ7cs-6acWy4t_7G79wN5lTSsnuFBSeI
+
 import {
   GoogleGenerativeAI,
   HarmCategory,
@@ -6,7 +6,7 @@ import {
 } from "@google/generative-ai";
 
 // const apiKey = process.env.GEMINI_API_KEY;
-const hulla = "AIzaSyCtQ7cs-6acWy4t_7G79wN5lTSsnuFBSeI";
+const hulla = "here is my key qwak qwak qwak";
 const genAI = new GoogleGenerativeAI(hulla);
 
 const model = genAI.getGenerativeModel({
